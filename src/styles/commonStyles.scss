@@ -1,0 +1,48 @@
+@import 'const';
+
+.button {
+  padding: 12px 24px;
+
+  background: #F8BDFC;
+  border-radius: 10px;
+  border: none;
+  &_text {
+    color: $greenColor;
+  }
+}
+
+.text-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  &__label {
+    color: $greyColor;
+    font-weight: 500;
+    font-size: 9px;
+    line-height: 9px;
+  }
+  &__input {
+    border: none;
+    border-bottom: 1px solid $greenColor;
+    background: $yellowColor;
+  }
+}
+
+.profile-field {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  &__name {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 13px;
+    color: $blackColor;
+  }
+  &__value {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 13px;
+    color: $greyColor;
+  }
+}
