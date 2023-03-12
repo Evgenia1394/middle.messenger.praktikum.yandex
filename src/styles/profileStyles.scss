@@ -1,0 +1,44 @@
+@import 'const';
+
+.profile {
+  background: $yellowColor;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 510px;
+  }
+  &__name {
+    color: $blackColor;
+  }
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 21px;
+    width: 100%;
+    margin-top: 64px;
+    margin-bottom: 48px;
+  }
+  &__img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: #EFEFEF;
+    margin-bottom: 21px;
+    cursor: pointer;
+  }
+  &__line {
+    border-left: 1px solid $greenColor;
+    height: 100%;
+  }
+}
