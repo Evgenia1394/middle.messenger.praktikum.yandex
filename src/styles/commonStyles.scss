@@ -6,6 +6,7 @@
   background: #F8BDFC;
   border-radius: 10px;
   border: none;
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
   &_text {
     color: $greenColor;
   }
@@ -45,4 +46,27 @@
     line-height: 13px;
     color: $greyColor;
   }
+}
+
+.text-grey-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  &__input {
+    background: $yellowColor;
+    border-radius: 5px;
+    border: none;
+    height: 32px;
+  }
+}
+
+.arrow-button {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: $yellowColor;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
