@@ -1,11 +1,12 @@
-@import 'const';
+@import url('/const.scss');
 
 .button {
   padding: 12px 24px;
-
   background: #F8BDFC;
   border-radius: 10px;
   border: none;
+  box-shadow: 4px 4px 8px 0 rgba(34 60 80 20%);
+
   &_text {
     color: $greenColor;
   }
@@ -15,12 +16,14 @@
   display: flex;
   flex-direction: column;
   gap: 7px;
+
   &__label {
     color: $greyColor;
     font-weight: 500;
     font-size: 9px;
     line-height: 9px;
   }
+
   &__input {
     border: none;
     border-bottom: 1px solid $greenColor;
@@ -33,16 +36,42 @@
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+
   &__name {
     font-weight: 500;
     font-size: 13px;
     line-height: 13px;
     color: $blackColor;
   }
+
   &__value {
     font-weight: 500;
     font-size: 13px;
     line-height: 13px;
     color: $greyColor;
   }
+}
+
+.text-grey-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+
+  &__input {
+    background: $yellowColor;
+    border-radius: 5px;
+    border: none;
+    height: 32px;
+  }
+}
+
+.arrow-button {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: $yellowColor;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
