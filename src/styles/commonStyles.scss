@@ -1,11 +1,11 @@
-@import '/const.scss';
+@import "const";
 
 .button {
   padding: 12px 24px;
   background: #F8BDFC;
   border-radius: 10px;
   border: none;
-  box-shadow: 4px 4px 8px 0 rgba(34 60 80 20%);
+  box-shadow: 4px 4px 8px 0 rgba(34, 60, 80, 0.2);
 
   &_text {
     color: $greenColor;

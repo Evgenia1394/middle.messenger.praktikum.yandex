@@ -1,4 +1,4 @@
-@import '/const.scss';
+@import "const";
 
 .registration {
   display: flex;
@@ -9,7 +9,7 @@
   &__content {
     width: 340px;
     background: $yellowColor;
-    box-shadow: 0 0 6px rgba(0 0 0 14%);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.14);
     border-radius: 12px;
     padding: 50px 30px;
     display: flex;
