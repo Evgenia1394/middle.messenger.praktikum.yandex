@@ -1,12 +1,13 @@
-@import 'const';
+@import '/const.scss';
 
-.changeData {
+.change-data {
   background: $yellowColor;
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+
   &__fields {
     display: flex;
     flex-direction: column;
@@ -15,15 +16,18 @@
     margin-top: 48px;
     width: 100%;
   }
+
   &__content {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 510px;
   }
+
   &__name {
     color: $blackColor;
   }
+
   &__img {
     width: 130px;
     height: 130px;

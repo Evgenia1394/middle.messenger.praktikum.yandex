@@ -1,4 +1,4 @@
-@import 'const';
+@import '/const.scss';
 
 .dialog-preview {
   width: 310px;
@@ -10,18 +10,21 @@
   padding: 10px;
   border-bottom: 1px solid #B2FAF2;
   box-sizing: border-box;
+
   &__description {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 50%;
   }
+
   &__message {
     font-weight: 500;
     font-size: 12px;
     line-height: 15px;
     color: $greyColor;
   }
+
   &__details {
     width: 25%;
     display: flex;
@@ -29,6 +32,7 @@
     justify-content: space-between;
     align-items: center;
   }
+
   &__icon {
     background: $whiteGreyColor;
     align-items: center;
@@ -36,24 +40,28 @@
     height: 47px;
     border-radius: 50%;
   }
+
   &__name {
     color: $blackColor;
     font-weight: 600;
     font-size: 13px;
     line-height: 13px;
   }
+
   &__time {
     font-weight: 500;
     font-size: 9px;
     line-height: 13px;
     color: $greyColor;
   }
+
   &__count {
     font-weight: 500;
     font-size: 11px;
     line-height: 12px;
     color: $whiteColor;
   }
+
   &__circle {
     background: $greenColor;
     height: 20px;
