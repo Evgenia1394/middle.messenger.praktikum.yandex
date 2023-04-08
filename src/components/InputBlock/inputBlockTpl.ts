@@ -9,5 +9,6 @@ export const inputTpl = `
             id={{id}} 
             placeholder={{placeholder}} 
             value={{value}}>
+            <span id="not-valid" class={{id}}></span>
         </div>
     `

@@ -28,8 +28,8 @@ export class Login extends Block<LoginProps> {
             label: 'Логин',
             value: null,
             events: {
-                focusin: (e) => validateInput(e.target.value, e.target.name),
-                focusout: (e) => validateInput(e.target.value, e.target.name),
+                focusin: (e) => validateInput(e.target.value, e.target.name, e.target.id),
+                focusout: (e) => validateInput(e.target.value, e.target.name, e.target.id),
             },
         });
         this.children.passwordInput = new InputBlock({
@@ -40,8 +40,8 @@ export class Login extends Block<LoginProps> {
             label: 'Пароль',
             value: null,
             events: {
-                focusin: (e) => validateInput(e.target.value, e.target.name),
-                focusout: (e) => validateInput(e.target.value, e.target.name),
+                focusin: (e) => validateInput(e.target.value, e.target.name, e.target.id),
+                focusout: (e) => validateInput(e.target.value, e.target.name, e.target.id),
             },
         });
     }

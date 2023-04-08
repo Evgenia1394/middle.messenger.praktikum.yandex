@@ -23,50 +23,50 @@ export class Registration extends Block<RegistrationProps> {
         this.children.emailInput = new InputBlock({
             type: 'email', name: 'email', id: 'email', value: 'pochta@yandex.ru', label: 'Почта',
             events: {
-                focusin: (e) => validateInput(e.target.value, e.target.name),
-                focusout: (e) => validateInput(e.target.value, e.target.name),
+                focusin: (e) => validateInput(e.target.value, e.target.name, e.target.id),
+                focusout: (e) => validateInput(e.target.value, e.target.name, e.target.id),
             },
         });
         this.children.loginInput = new InputBlock({
             type: 'text', name: 'login', id: 'login', value: 'ivanivanov', label: 'Логин',
             events: {
-                focusin: (e) => validateInput(e.target.value, e.target.name),
-                focusout: (e) => validateInput(e.target.value, e.target.name),
+                focusin: (e) => validateInput(e.target.value, e.target.name, e.target.id),
+                focusout: (e) => validateInput(e.target.value, e.target.name, e.target.id),
             },
         });
         this.children.firstNameInput = new InputBlock({
             type: 'text', name: 'first_name', id: 'firstName', value: 'ivan', label: 'Имя',
             events: {
-                focusin: (e) => validateInput(e.target.value, e.target.name),
-                focusout: (e) => validateInput(e.target.value, e.target.name),
+                focusin: (e) => validateInput(e.target.value, e.target.name, e.target.id),
+                focusout: (e) => validateInput(e.target.value, e.target.name, e.target.id),
             },
         });
         this.children.secondNameInput = new InputBlock({
             type: 'text', name: 'second_name', id: 'secondName', value: 'ivanov', label: 'Фамилия',
             events: {
-                focusin: (e) => validateInput(e.target.value, e.target.name),
-                focusout: (e) => validateInput(e.target.value, e.target.name),
+                focusin: (e) => validateInput(e.target.value, e.target.name, e.target.id),
+                focusout: (e) => validateInput(e.target.value, e.target.name, e.target.id),
             },
         });
         this.children.phoneNumberInput = new InputBlock({
             type: 'tel', name: 'phone', id: 'phoneNumber', value: '+79099673030', label: 'Телефон',
             events: {
-                focusin: (e) => validateInput(e.target.value, e.target.name),
-                focusout: (e) => validateInput(e.target.value, e.target.name),
+                focusin: (e) => validateInput(e.target.value, e.target.name, e.target.id),
+                focusout: (e) => validateInput(e.target.value, e.target.name, e.target.id),
             },
         });
         this.children.passwordFirstInput = new InputBlock({
             type: 'password', name: 'password', id: 'passwordFirst', value: 'ivanov',label: 'Пароль',
             events: {
-                focusin: (e) => validateInput(e.target.value, e.target.name),
-                focusout: (e) => validateInput(e.target.value, e.target.name),
+                focusin: (e) => validateInput(e.target.value, e.target.name, e.target.id),
+                focusout: (e) => validateInput(e.target.value, e.target.name, e.target.id),
             },
         });
         this.children.passwordSecondInput = new InputBlock({
             type: 'password', name: 'password', id: 'passwordSecond', value: 'ivanov', label: 'Пароль (еще раз)',
             events: {
-                focusin: (e) => validateInput(e.target.value, e.target.name),
-                focusout: (e) => validateInput(e.target.value, e.target.name),
+                focusin: (e) => validateInput(e.target.value, e.target.name, e.target.id),
+                focusout: (e) => validateInput(e.target.value, e.target.name, e.target.id),
             },
         });
     }

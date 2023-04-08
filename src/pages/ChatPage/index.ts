@@ -19,8 +19,14 @@ export class ChatPage extends Block<ChatPageProps> {
                 click: () => requiredValidation('message')
             }
         });
-        this.children.greyInput = new GreyInput({type: 'text', name: 'search', id: 'search', placeholder: 'Поиск'})
-        this.children.messageInput = new GreyInput({type: 'text', name: 'message', id: 'message', placeholder: 'Сообщение'})
+        this.children.greyInput = new GreyInput({type: 'text', name: 'search', id: 'search', placeholder: 'Поиск', events: {
+                focusin: (e) => requiredValidation(e.target.id),
+                focusout: (e) => requiredValidation(e.target.id),
+            }})
+        this.children.messageInput = new GreyInput({type: 'text', name: 'message', id: 'message', placeholder: 'Сообщение', events: {
+                focusin: (e) => requiredValidation(e.target.id),
+                focusout: (e) => requiredValidation(e.target.id),
+            }})
         this.children.chatList = new MessagesData({});
     }
 

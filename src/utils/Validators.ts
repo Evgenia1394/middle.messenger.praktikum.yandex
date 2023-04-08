@@ -20,19 +20,21 @@ export function submitForm (validateWithType = false) {
     }
 }
 
-export function validateInput (value, name) {
+export function validateInput(value, name, id) {
+    const inputError = document.querySelector(`span.${id}`);
     if (new RegExp(RegExpExpressions[name]).test(value)) {
-        console.log(`Инпут ${name} валидный`);
+        inputError.textContent = ``
     } else {
-        console.log(`Инпут ${name} невалидный`);
+        inputError.textContent = `Неверный формат поля ${name}`
     }
 }
 
 export function requiredValidation(tag: string) {
     const Input = document.getElementById(tag);
+    const inputError = document.querySelector(`span.${tag}`);
     if ((Input as HTMLInputElement).value) {
-        console.log('Сообщение введено');
+        inputError.textContent = ``
     } else {
-        console.log('Сообщение не введено');
+        inputError.textContent = `Сообщение не введено!`
     }
 }
