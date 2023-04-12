@@ -6,6 +6,7 @@
   border-radius: 10px;
   border: none;
   box-shadow: 4px 4px 8px 0 rgba(34, 60, 80, 0.2);
+  width: max-content;
 
   &_text {
     color: $greenColor;
@@ -74,4 +75,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#not-valid {
+  color: red;
+  font-size: 14px;
 }

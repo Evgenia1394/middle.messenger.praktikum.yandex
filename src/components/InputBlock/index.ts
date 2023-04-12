@@ -6,7 +6,7 @@ export interface InputBlockProps {
     type?: string,
     id?: string,
     name?: string,
-    value?: string,
+    value?: string | null,
     label?: string,
     events?: {
         click?: () => void;

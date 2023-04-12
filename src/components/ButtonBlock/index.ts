@@ -5,8 +5,11 @@ interface ButtonProps {
     type?: string;
     label?: string;
     className?: string;
+    typeAction?: string;
+    formName?: string;
     events?: {
-        click: () => void;
+        click?: () => void;
+        submit?: () => void;
     };
     buttonTitle?: string;
 }

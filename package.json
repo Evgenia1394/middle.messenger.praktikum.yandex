@@ -6,7 +6,8 @@
     "dev": "parcel index.hbs",
     "build": "parcel build index.hbs",
     "start": "npm run build && node server/server.js",
-    "stylelint": "stylelint \"**/*.scss\""
+    "stylelint": "stylelint \"**/*.scss\"",
+    "start-dev": "npx parcel index.hbs"
   },
   "keywords": [],
   "author": "",
