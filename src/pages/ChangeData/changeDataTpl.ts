@@ -1,10 +1,11 @@
 import "../../styles/changeDataStyles.scss";
 
 export const changeDataTpl = `
-       <div class="change-data">
+       <main class="change-data">
+       <div class="change-data__wrapper">
        <div class="change-data__content">
-              <div class="change-data__img"></div>
-       <div class="change-data__name">Иван</div>
+              {{{avatarInput}}}
+       <div class="change-data__name">{{{titleName}}}</div>
             <form class="change-data__form" id="change_data">
                   <div class="change-data__fields">
                         {{{emailInput}}}
@@ -18,4 +19,5 @@ export const changeDataTpl = `
                 </form>
        </div>
        </div>
+       </main>
     `

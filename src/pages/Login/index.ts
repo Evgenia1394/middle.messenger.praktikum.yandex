@@ -2,8 +2,9 @@ import {loginTpl} from "./LoginTpl";
 import Block from "../../utils/Block";
 import {ButtonBlock} from "../../components/ButtonBlock";
 import {InputBlock} from "../../components/InputBlock";
-import {submitForm, validateInput} from "../../utils/Validators";
-
+import {isValidForm, validateInput} from "../../utils/Validators";
+import Router from "../../services/Router/Router";
+import {LoginAPI} from "../../api/Login.api";
 
 interface LoginProps {
 }
@@ -12,12 +13,19 @@ export class Login extends Block<LoginProps> {
     constructor(props: LoginProps) {
         super({ type: 'div', ...props });
     }
+    public router = new Router('.app');
 
     init() {
         this.children.authorizeButton = new ButtonBlock({
             buttonTitle: 'Авторизоваться',
             events: {
-                click: () => submitForm()
+                click: () => this.SignInRequest()
+            }
+        });
+        this.children.registrationButton = new ButtonBlock({
+            buttonTitle: 'Нет аккаунта',
+            events: {
+                click: () => this.router.go('/registration')
             }
         });
         this.children.loginInput = new InputBlock({
@@ -44,6 +52,25 @@ export class Login extends Block<LoginProps> {
                 focusout: (e) => validateInput(e.target.value, e.target.name, e.target.id),
             },
         });
+    }
+
+    public SignInRequest = async () => {
+        if (!isValidForm()) {
+            console.log('!isValidForm')
+            return;
+        }
+        const dataSignUp = {
+            login: document.querySelector('input[name="login"]').value,
+            password: document.querySelector('input[name="password"]').value,
+        }
+
+        const result = await new LoginAPI().requestLogin(dataSignUp);
+        if (result?.reason) {
+            console.log('не удалось войти', result.reason);
+            return;
+        } else {
+            this.router.go('/messages')
+        }
     }
 
 

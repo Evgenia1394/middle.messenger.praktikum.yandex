@@ -1,6 +1,7 @@
 import { EventBus } from './EventBus';
 import { nanoid } from 'nanoid';
 import Handlebars from 'handlebars';
+import isEqual from "./isEqual";
 
 // Нельзя создавать экземпляр данного класса
 class Block<P extends Record<string, any> = any> {
@@ -41,7 +42,6 @@ class Block<P extends Record<string, any> = any> {
     _getChildrenAndProps(childrenAndProps: P): { props: P, children: Record<string, Block | Block[]> } {
         const props: Record<string, unknown> = {};
         const children: Record<string, Block | Block[]> = {};
-
         Object.entries(childrenAndProps).forEach(([key, value]) => {
             if (Array.isArray(value) && value.length > 0 && value.every(v => v instanceof Block)) {
                 children[key as string] = value;
@@ -51,7 +51,6 @@ class Block<P extends Record<string, any> = any> {
                 props[key] = value;
             }
         });
-
         return {props: props as P, children};
     }
 
@@ -88,11 +87,12 @@ class Block<P extends Record<string, any> = any> {
     protected init() {
     }
 
-    _componentDidMount() {
+    private _componentDidMount() {
         this.componentDidMount();
+        this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
 
-    componentDidMount() {
+    protected componentDidMount() {
     }
 
     public dispatchComponentDidMount() {
@@ -114,14 +114,20 @@ class Block<P extends Record<string, any> = any> {
     }
 
     protected componentDidUpdate(oldProps: P, newProps: P) {
-        return true;
+        if (!newProps || !oldProps) {
+            return false;
+        } else {
+            return !isEqual(oldProps, newProps)
+        }
     }
 
     setProps = (nextProps: Partial<P>) => {
         if (!nextProps) {
             return;
         }
-
+        if(isEqual(nextProps, this.props)) {
+            return;
+        }
         Object.assign(this.props, nextProps);
     };
 
@@ -153,7 +159,7 @@ class Block<P extends Record<string, any> = any> {
 
         Object.entries(this.children).forEach(([name, component]) => {
             if (Array.isArray(component)) {
-                contextAndStubs[name] = component.map(child => `<div data-id="${child.id}"></div>`)
+                contextAndStubs[name] = component.map(child => `<div data-id="${child.id}"></div>`).join('')
             } else {
                 contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
             }
@@ -165,7 +171,10 @@ class Block<P extends Record<string, any> = any> {
 
         const temp = document.createElement('template');
 
+
         temp.innerHTML = html;
+
+
 
         const replaceStub = (component: Block) => {
             const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
@@ -173,21 +182,20 @@ class Block<P extends Record<string, any> = any> {
             if (!stub) {
                 return;
             }
-
             component.getContent()?.append(...Array.from(stub.childNodes));
 
             stub.replaceWith(component.getContent()!);
         }
-
         Object.entries(this.children).forEach(([_, component]) => {
             if (Array.isArray(component)) {
                 component.forEach(replaceStub);
+
             } else {
                 replaceStub(component);
             }
         });
-
         return temp.content;
+
     }
 
     protected render(): DocumentFragment {
@@ -217,10 +225,20 @@ class Block<P extends Record<string, any> = any> {
                 self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
                 return true;
             },
-            // deleteProperty() {
-            //     throw new Error('Нет доступа');
-            // }
         });
+    }
+
+    show() {
+        this.getContent().style.display = 'block';
+    }
+
+    hide() {
+        this.getContent().remove();
+        //this.getContent().style.display = 'block';
+    }
+
+    getContent() {
+        return this._element;
     }
 }
 

@@ -6,3 +6,5 @@ netlify: https://effervescent-kulfi-d44cc4.netlify.app
 to start dev with hotReloading: npx parcel index.hbs
 
 Project uses eslint-config-airbnb, typescript
+
+Created chat with webSocket

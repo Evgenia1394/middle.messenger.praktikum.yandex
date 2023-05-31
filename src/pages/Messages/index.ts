@@ -1,28 +1,64 @@
 import {messagesDataTpl} from "./messagesDataTpl";
 import Block from "../../utils/Block";
 import {DialogPreview} from "../../components/DialogPreview";
+import Router from "../../services/Router/Router";
+import Store from "../../Store/store";
+import {PageTitle} from "../../components/PageTitle";
+import {BASE_URL} from "../../api/base-api";
 
-interface MessagesDataProps {
+interface MessagesProps {
+    type?: string;
+    label?: string;
+    className?: string;
+    typeAction?: string;
+    formName?: string;
+    events?: {
+        click?: () => void;
+        submit?: () => void;
+    };
+    buttonTitle?: string;
 }
-
-export class MessagesData extends Block<MessagesDataProps> {
-    constructor(props: MessagesDataProps) {
-        super({type: 'div', ...props});
+export class MessagesBlock extends Block<MessagesProps> {
+    constructor(props: MessagesProps) {
+        super({ type: 'div', ...props });
     }
+    public router = new Router()
 
     init() {
-    const mockData = [{text: 'Привет, как дела?', name: 'Иван', count: '2', time: '15:45'},{text: 'Получилось?', name: 'Петр', count: '1', time: '12:48'},
-            {text: 'Да', name: 'Лаврентий', count: '3', time: '10:59'}]
+        this.children.dialogPreview = new PageTitle({Title: 'нет чатов'})
+    }
 
-        //не понимаю почему рендерятся запятые у DialogPreview
-        this.children.dialogPreview = mockData.map(chat => {
-            return new DialogPreview({...chat})
-        });
+    componentDidUpdate(oldProps: MessagesProps, newProps: MessagesProps): boolean {
+        if (newProps?.chatList && this.props.chatList.length) {
+            this.children.dialogPreview = newProps.chatList.map(chat => {
+                return new DialogPreview(
+                    {
+                        id: chat.id,
+                        name: chat?.title ? chat?.title : 'Неизвестный отправитель',
+                        text: chat.last_message?.content ? chat.last_message?.content : 'Неизвестное сообщение',
+                        time: chat.last_message?.time ? chat.last_message?.time : 'Неизветнокогда',
+                        count: Number(chat.unread_count) ? Number(chat.unread_count) : 0,
+                        avatar: `${BASE_URL}/resources${chat.avatar}`,
+                        events: {
+                            click: (e) => this.openChat(e, +chat.id)
+                        }
+                    })
+            });
+        }
+        return super.componentDidUpdate(oldProps, newProps);
+    }
+
+    async openChat(e, chatId) {
+        e.preventDefault()
+        const currentUrl = window.location.pathname;
+        const cleanedUrl = currentUrl.replace(/\/\d+$/, '');
+        const newUrl = `${cleanedUrl}/${chatId}`;
+        Store.set('currentChatId', Number(chatId));
+        history.pushState(null, null, newUrl);
     }
 
     render() {
         return this.compile(messagesDataTpl, { ...this.props });
     }
-
 
 }

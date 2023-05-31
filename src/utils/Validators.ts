@@ -1,22 +1,20 @@
 import {RegExpExpressions} from "./regExp";
 
-export function submitForm (validateWithType = false) {
-    const allInputs = Array.from(document.querySelectorAll('input'));
+export function isValidForm (validateWithType = false): boolean {
+    const allInputs = Array.from(document.querySelectorAll('input')).filter(item => item.type !== 'file');
     let notValidInputs;
     if (validateWithType) {
         notValidInputs = allInputs
             .filter(input => (!new RegExp(RegExpExpressions[input.type]).test(input.value)) || (!input.value));
     } else {
+        /** Когда есть инпуты с одинаковым типом в форме - вытаскиваем и валидируем в зав-ти от имени */
         notValidInputs = allInputs
             .filter(input => (!new RegExp(RegExpExpressions[input.name]).test(input.value)) || (!input.value));
     }
-    const allValues = allInputs.map((control) => {
-        return `Input ${(control as HTMLInputElement).name} со значением ${(control as HTMLInputElement).value}`}
-    )
     if (!!notValidInputs.length) {
-        console.log('Форма невалидна', allValues)
+        return false;
     } else {
-        console.log('Форма валидна', allValues)
+        return true;
     }
 }
 
@@ -33,8 +31,10 @@ export function requiredValidation(tag: string) {
     const Input = document.getElementById(tag);
     const inputError = document.querySelector(`span.${tag}`);
     if ((Input as HTMLInputElement).value) {
-        inputError.textContent = ``
+        inputError.textContent = ``;
+        return true;
     } else {
-        inputError.textContent = `Сообщение не введено!`
+        inputError.textContent = `Сообщение не введено!`;
+        return false;
     }
 }
