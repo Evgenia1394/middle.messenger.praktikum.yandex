@@ -1,3 +1,5 @@
+export const BASE_REQUEST_URL = 'ya-praktikum.tech/api/v2'
+
 function fetchWithRetry(url, options={ retries: 1 }) {
     const {retries} = options;
     let errorsCount = 0;
@@ -40,17 +42,17 @@ function queryStringify(data) {
     return `${res.join("&").trim()}`;
 }
 
-class HTTPTransport {
-    get = (url, options={timeout: 5000, headers: {}, data: {}}, method?) => {
+export class HTTPTransport {
+    get = (url, options?) => {
         return this.request(url, options, METHODS.GET, options.timeout);
     };
-    put = (url, options={timeout: 5000, headers: {}, data: {}}, method) => {
+    put = (url, options?) => {
         return this.request(url, options, METHODS.PUT, options.timeout);
     };
-    post = (url, options={timeout: 5000, headers: {}, data: {}}, method) => {
+    post = (url, options?) => {
         return this.request(url, options, METHODS.POST, options.timeout);
     };
-    delete = (url, options={timeout: 5000, headers: {}, data: {}}, method) => {
+    delete = (url, options={timeout: 5000, headers: {}, data: {}}) => {
         return this.request(url, options, METHODS.DELETE, options.timeout);
     };
 
@@ -61,9 +63,19 @@ class HTTPTransport {
             const xhr = new XMLHttpRequest();
             xhr.timeout = timeout;
             if (method === METHODS.GET || !data) {
-                url = `${url}?${queryStringify(data)}`
+                if (data) {
+                    url = `${url}?${queryStringify(data)}`
+                } else {
+                    url = url;
+                }
             }
-            xhr.open(method, url);
+            xhr.open(method, `https://${BASE_REQUEST_URL}${url}`, true);
+            if (headers) {
+                Object.entries(headers).forEach(([key, value]) => {
+                    xhr.setRequestHeader(key, value as string);
+                });
+            }
+            xhr.withCredentials = true;
             xhr.onload = function() {
                 resolve(xhr);
             }
@@ -78,5 +90,15 @@ class HTTPTransport {
                 xhr.send(data);
             }
         })
+    }
+
+    //TODO: доделать универсальный метод
+    normalizeResponse(data: unknown) {
+        let resData;
+        data.then(data => {
+            resData = JSON.parse((data as XMLHttpRequest).responseText);
+        }).catch(error => {
+            console.error('Ошибка:', error);
+        });
     }
 }

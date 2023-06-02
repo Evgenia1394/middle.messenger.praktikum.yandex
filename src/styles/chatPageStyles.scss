@@ -6,26 +6,35 @@
   height: 100%;
   width: 100%;
 
+  &__wrapper {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+  }
+
   &__left {
     height: 100%;
     display: flex;
     flex-direction: column;
+    min-width: 327px;
   }
 
   &__messages {
+    overflow: auto;
     background: $pinkColor;
     height: 80%;
     display: flex;
     flex-direction: column;
-    width: max-content;
+    width: 100%;
     justify-content: flex-start;
     flex-grow: 1;
   }
 
   &__search {
-    background: $pinkColor;
-    height: 102px;
-    width: 310px;
+    background: $greenColor;
+    height: 146px;
+    width: 100%;
     padding: 21px 10px 10px;
     box-sizing: border-box;
     border-bottom: 1px solid $greenColor;
@@ -52,6 +61,7 @@
     background: $yellowColor;
     width: 100%;
     height: 100%;
+    overflow: auto;
   }
 
   &__dialog-header {
@@ -101,5 +111,13 @@
 
   &__message-input-wrapper {
     width: 100%;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    max-width: 310px;
+    padding: 12px;
   }
 }

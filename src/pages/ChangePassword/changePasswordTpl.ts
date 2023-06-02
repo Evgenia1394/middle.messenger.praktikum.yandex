@@ -1,10 +1,11 @@
 import "../../styles/changePasswordStyles.scss";
 
 export const changePasswordTpl = `
+<main class="change-password__wrapper">
        <div class="change-password">
        <div class="change-password__content">
-              <div class="change-password__img" name="avatar"></div>
-       <div class="change-password__name">Иван</div>
+              {{{avatarInput}}}
+       <div class="change-password__name">{{{titleName}}}</div>
               <form class="change-password__fields">
                     {{{passwordOldInput}}}
                     {{{passwordFirstInput}}}
@@ -13,4 +14,5 @@ export const changePasswordTpl = `
             {{{btn}}}
        </div>
        </div>
+</main>
     `

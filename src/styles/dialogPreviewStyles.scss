@@ -10,6 +10,8 @@
   padding: 10px;
   border-bottom: 1px solid #B2FAF2;
   box-sizing: border-box;
+  cursor: pointer;
+  position: relative;
 
   &__description {
     display: flex;
@@ -70,5 +72,29 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  &__delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: $yellowColor;
+    height: 12px;
+    width: 12px;
+    border-radius: 0 0 0 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__delete::before {
+    content: "x";
+    font-size: 12px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+  }
+
+  &__delete:hover {
+    opacity: 50%;
   }
 }

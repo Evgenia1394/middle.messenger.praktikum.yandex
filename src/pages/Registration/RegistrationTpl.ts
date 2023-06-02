@@ -1,7 +1,8 @@
 import "../../styles/registrationStyles.scss";
 
 export const registrationTpl = `
-        <div class="registration">
+        <main class="registration">
+        <div class="registration__wrapper">
             <div class="registration__content">
             <div>
                 <div class="registration__title">Регистрация</div>
@@ -17,10 +18,9 @@ export const registrationTpl = `
             </div>
             <div class="registration__buttons">
                 {{{registrationButton}}}
-                <div class="registration__enter">
-                 Войти
-                </div>
+                 {{{toLoginButton}}}
             </div>
             </div>
-        </div>
+            </div>
+        </main>
     `

@@ -1,38 +1,64 @@
-import {Main} from "./pages/Main";
-import {App} from "./App";
-import {PageError404} from "./pages/PageError404";
-import {PageError500} from "./pages/PageError500";
-import {Login} from "./pages/Login";
-import {Registration} from "./pages/Registration";
-import {Profile} from "./pages/Profile";
-import {ChangeData} from "./pages/ChangeData";
-import {ChangePassword} from "./pages/ChangePassword";
-import {ChatPage} from "./pages/ChatPage";
+import Router from './services/Router/Router.js';
+import Store from "./Store/store";
+import {UserController} from "./user.controller";
 
 const root = document.querySelector('#root');
+let isLogged;
+new UserController().getUser()
+    .then(data => {
+        return data
+    }).then((user) => {
+        if (user?.reason) {
+            isLogged = false;
+        } else {
+            Store.set('user', user)
+            isLogged = true;
+        }
+    }).catch((error => isLogged = false))
+    .then(() => {getComponent(window.location.pathname, isLogged)})
 
-const component = getComponent(window.location.pathname);
-root.appendChild(component.element)
+let router = new Router('.app');
+router.start();
 
-function getComponent(pathname) {
-    switch (pathname) {
-        case '/page-error404':
-            return new PageError404({})
-        case '/page-error500':
-            return new PageError500({});
-        case '/login':
-            return new Login({});
-        case '/registration':
-            return new Registration({});
-        case '/profile':
-            return new Profile({});
-        case '/change-data':
-            return new ChangeData({});
-        case '/change-password':
-            return new ChangePassword({});
-        case '/messages':
-            return new ChatPage({});
-        default:
-            return new Main({});
-    }
+
+const link = document.createElement('link');
+link.rel = 'stylesheet';
+link.href = 'https://fonts.googleapis.com/css?family=Open+Sans';
+link.type = 'text/css';
+document.head.appendChild(link);
+
+function getComponent(pathname, isLogged) {
+        switch (pathname) {
+                case '/page-error404':
+                    return router.go('/page-error404');
+                case '/page-error500':
+                    return router.go('/page-error500');
+                case '/login':
+                    return router.go('/login');
+                case '/registration':
+                    return router.go('/registration');
+                case '/profile':
+                    return router.go('/profile');
+                case '/change-data':
+                    return router.go('/change-data');
+                case '/change-password':
+                    return router.go('/change-password');
+                case '/messages':
+                    return router.go('/messages');
+                case '/messages/:id':
+                    return router.go('/messages/:id');
+                default:
+                    if (!isLogged) {
+                        return router.go('/login');
+                    } else {
+                        return router.go('/messages');
+                    };
+            }
 }
+
+
+
+
+
+
+
