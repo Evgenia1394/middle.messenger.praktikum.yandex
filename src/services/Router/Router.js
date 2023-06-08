@@ -86,6 +86,11 @@ export class Router {
         this._onRoute(pathname);
     }
 
+    reset() {
+        this.routes = [];
+        this._currentRoute = null;
+    }
+
     back() {
        this.history.back();
        return window.location.replace(document.referrer)

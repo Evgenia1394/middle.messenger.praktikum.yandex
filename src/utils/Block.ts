@@ -229,17 +229,18 @@ class Block<P extends Record<string, any> = any> {
     }
 
     show() {
-        this.getContent().style.display = 'block';
+        (this.getContent() as HTMLElement).style.display = 'block';
+
     }
 
     hide() {
-        this.getContent().remove();
+        (this.getContent() as HTMLElement).remove();
         //this.getContent().style.display = 'block';
     }
 
-    getContent() {
-        return this._element;
-    }
+    // getContent() {
+    //     return this._element;
+    // }
 }
 
 export default Block;

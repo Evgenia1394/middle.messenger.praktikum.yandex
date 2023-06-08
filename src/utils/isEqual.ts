@@ -17,7 +17,7 @@ function isArrayOrObject(value: unknown): value is ([] | PlainObject) {
     return isPlainObject(value) || isArray(value);
 }
 
-function isEqual(lhs, rhs) {
+function isEqual(lhs: any, rhs: any) {
     // Сравнение количества ключей объектов и массивов
     if (Object.keys(lhs).length !== Object.keys(rhs).length) {
         return false;
