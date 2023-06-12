@@ -1,35 +1,92 @@
-import set from "./set";
-import {expect} from "chai";
+import { expect } from 'chai';
+import set from './set';
+import isEqual from './isEqual';
 
 describe('set function', () => {
-    const keypath = 'test';
-    const value = 'some value';
-    let obj: Record<string, unknown>;
+  const keypath = 'test';
+  const value = 'some value';
+  // @ts-ignore
+  let obj: Record<string, unknown>;
 
-    beforeEach(() => {
-        obj = {};
-    });
+  beforeEach(() => {
+    obj = {};
+  });
+  // arrange
+  it('should set a value by keypath to the object', () => {
+    // act
+    set(obj, keypath, value);
+    // assert
+    expect(obj).to.haveOwnProperty(keypath, value);
+  });
 
-    it('should set a value by keypath to the object', () => {
-        set(obj, keypath, value);
+  it('should return original object', () => {
+    // act
+    const result = set(obj, keypath, value);
+    obj.test2 = 'another value';
 
-        expect(obj).to.haveOwnProperty(keypath, value);
-    });
+    // assert
+    expect(result).to.equal(obj);
+  });
 
-    it('should return original object', () => {
-        const result = set(obj, keypath, value);
+  it('should return original object if it is not an object', () => {
+    const notAnObject = 'string';
 
-        obj['test2'] = 'another value';
+    const result = set(notAnObject, keypath, value);
 
-        expect(result).to.equal(obj);
-    });
+    expect(result).to.eq(notAnObject);
+  });
+});
 
-    it('should return original object if it\'s is not an object', () => {
-        const notAnObject = 'string';
+describe('isEqual function', () => {
+  // let obj: Record<string, unknown>;
+  // beforeEach(() => {
+  //     obj = {};
+  // });
 
-        const result = set(notAnObject, keypath, value);
+  it('should return false if objects have different amount keys', () => {
+    // arrange
+    const firstObject = {
+      cream: 'five',
+      soda: 'six',
+    };
+    const secondObject = {
+      soda: 'six',
+    };
+    // act
+    const result = isEqual(firstObject, secondObject);
+    // assert
+    expect(result).to.equal(false);
+  });
 
-        expect(result).to.eq(notAnObject);
-    });
+  it('should return true if objects is equal', () => {
+    // arrange
+    const firstSameObject = {
+      cream: 'five',
+      soda: 'six',
+    };
+    const secondSameObject = {
+      cream: 'five',
+      soda: 'six',
+    };
+    // act
+    const result = isEqual(firstSameObject, secondSameObject);
+    // assert
+    expect(result).to.equal(true);
+  });
 
+  it('should return true if objects have different value is some key', () => {
+    // arrange
+    const firstSimilarObject = {
+      cream: 'bomb',
+      soda: 'six',
+    };
+    const secondSimilarObject = {
+      cream: 'five',
+      soda: 'six',
+    };
+    // act
+    const result = isEqual(firstSimilarObject, secondSimilarObject);
+    // assert
+    expect(result).to.equal(false);
+  });
 });

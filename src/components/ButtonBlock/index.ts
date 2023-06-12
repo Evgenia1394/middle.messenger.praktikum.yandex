@@ -1,5 +1,5 @@
 import Block from '../../utils/Block';
-import {buttonBlockTpl} from "./ButtonBlockTpl";
+import { buttonBlockTpl } from './ButtonBlockTpl';
 
 interface ButtonProps {
     type?: string;
@@ -15,14 +15,14 @@ interface ButtonProps {
 }
 
 export class ButtonBlock extends Block<ButtonProps> {
-    constructor(props: ButtonProps) {
-        super({ type: 'button', ...props });
-    }
+  constructor(props: ButtonProps) {
+    super({ type: 'button', ...props });
+  }
 
-    init() {
-    }
+  init() {
+  }
 
-    render() {
-        return this.compile(buttonBlockTpl, { ...this.props });
-    }
+  render() {
+    return this.compile(buttonBlockTpl, { ...this.props });
+  }
 }

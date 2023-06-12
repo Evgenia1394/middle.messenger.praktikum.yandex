@@ -1,4 +1,4 @@
-import "../../styles/commonStyles.scss";
+import '../../styles/commonStyles.scss';
 
 export const buttonBlockTpl = `
         <button class="button">
@@ -6,4 +6,4 @@ export const buttonBlockTpl = `
             {{buttonTitle}}
         </div>
         </button>
-  `
+  `;

@@ -1,4 +1,4 @@
-import "../../styles/registrationStyles.scss";
+import '../../styles/registrationStyles.scss';
 
 export const registrationTpl = `
         <main class="registration">
@@ -23,4 +23,4 @@ export const registrationTpl = `
             </div>
             </div>
         </main>
-    `
+    `;

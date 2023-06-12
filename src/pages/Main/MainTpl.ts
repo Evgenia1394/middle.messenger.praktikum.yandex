@@ -29,4 +29,4 @@ export const mainTpl = `
             </ul>
         </nav>
     </main>
-    `
+    `;

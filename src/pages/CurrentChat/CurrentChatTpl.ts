@@ -1,4 +1,4 @@
-import "../../styles/chatPageStyles.scss";
+import '../../styles/chatPageStyles.scss';
 
 export const currentChatTpl = `
             <div class="chat-page__right">
@@ -36,4 +36,4 @@ export const currentChatTpl = `
                 {{{arrowButton}}}
             </div>
             </div>
-`
+`;

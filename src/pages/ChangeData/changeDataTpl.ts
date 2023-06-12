@@ -1,4 +1,4 @@
-import "../../styles/changeDataStyles.scss";
+import '../../styles/changeDataStyles.scss';
 
 export const changeDataTpl = `
        <main class="change-data">
@@ -20,4 +20,4 @@ export const changeDataTpl = `
        </div>
        </div>
        </main>
-    `
+    `;

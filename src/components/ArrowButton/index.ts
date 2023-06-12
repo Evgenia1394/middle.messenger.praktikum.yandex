@@ -1,4 +1,4 @@
-import {arrowButtonTpl} from "./arrowButtonTpl";
+import { arrowButtonTpl } from './arrowButtonTpl';
 
 import Block from '../../utils/Block';
 
@@ -13,15 +13,14 @@ interface ArrowButtonProps {
 }
 
 export class ArrowButton extends Block<ArrowButtonProps> {
-    constructor(props: ArrowButtonProps) {
-        super({ type: 'button', ...props });
-    }
+  constructor(props: ArrowButtonProps) {
+    super({ type: 'button', ...props });
+  }
 
-    init() {
-    }
+  init() {
+  }
 
-    render() {
-        return this.compile(arrowButtonTpl, { ...this.props });
-    }
+  render() {
+    return this.compile(arrowButtonTpl, { ...this.props });
+  }
 }
-

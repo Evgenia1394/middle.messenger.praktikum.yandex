@@ -1,4 +1,4 @@
-import "../../styles/changePasswordStyles.scss";
+import '../../styles/changePasswordStyles.scss';
 
 export const changePasswordTpl = `
 <main class="change-password__wrapper">
@@ -15,4 +15,4 @@ export const changePasswordTpl = `
        </div>
        </div>
 </main>
-    `
+    `;

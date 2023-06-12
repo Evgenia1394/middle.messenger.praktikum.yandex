@@ -1,5 +1,5 @@
 import Block from '../../utils/Block';
-import {ChatAvatarTpl} from "./ChatAvatarTpl";
+import { ChatAvatarTpl } from './ChatAvatarTpl';
 
 interface ChatAvatarProps {
     type?: string;
@@ -15,14 +15,14 @@ interface ChatAvatarProps {
 }
 
 export class ChatAvatar extends Block<ChatAvatarProps> {
-    constructor(props: ChatAvatarProps) {
-        super({ type: 'div', ...props });
-    }
+  constructor(props: ChatAvatarProps) {
+    super({ type: 'div', ...props });
+  }
 
-    init() {
-    }
+  init() {
+  }
 
-    render() {
-        return this.compile(ChatAvatarTpl, { ...this.props });
-    }
+  render() {
+    return this.compile(ChatAvatarTpl, { ...this.props });
+  }
 }

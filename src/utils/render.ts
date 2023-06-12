@@ -1,11 +1,12 @@
-export default function render(query, component) {
+import Block from './Block';
 
-    const root = document.querySelector('#root');
+export default function render(component: Block) {
+  // @ts-ignore
+  const root = document.querySelector('#root');
 
-    if (root)
-        root.appendChild(component.getContent());
+  if (root) { root.appendChild(component.getContent() as any); }
 
-    component.dispatchComponentDidMount();
+  component.dispatchComponentDidMount();
 
-    return root;
+  return root;
 }

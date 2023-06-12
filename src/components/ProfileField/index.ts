@@ -1,6 +1,5 @@
-import {profileFieldTpl} from "./profileFieldTpl";
-import Block from "../../utils/Block";
-
+import { profileFieldTpl } from './profileFieldTpl';
+import Block from '../../utils/Block';
 
 interface ProfileFieldProps {
     type?: string,
@@ -9,14 +8,14 @@ interface ProfileFieldProps {
 }
 
 export class ProfileField extends Block<ProfileFieldProps> {
-    constructor(props: ProfileFieldProps) {
-        super({ type: 'div', ...props });
-    }
+  constructor(props: ProfileFieldProps) {
+    super({ type: 'div', ...props });
+  }
 
-    init() {
-    }
+  init() {
+  }
 
-    render() {
-        return this.compile(profileFieldTpl, { ...this.props });
-    }
+  render() {
+    return this.compile(profileFieldTpl, { ...this.props });
+  }
 }

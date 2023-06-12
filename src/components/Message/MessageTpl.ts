@@ -1,4 +1,4 @@
-import "../../styles/messageStyles.scss";
+import '../../styles/messageStyles.scss';
 
 export const MessageTpl = `
     <div class="message__wrapper">
@@ -12,4 +12,4 @@ export const MessageTpl = `
                {{{time}}}
         </div>
     </div>
-    `
+    `;

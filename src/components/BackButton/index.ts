@@ -1,4 +1,4 @@
-import {backButtonTpl} from "./backButtonTpl";
+import { backButtonTpl } from './backButtonTpl';
 
 import Block from '../../utils/Block';
 
@@ -13,15 +13,14 @@ interface BackButtonProps {
 }
 
 export class BackButton extends Block<BackButtonProps> {
-    constructor(props: BackButtonProps) {
-        super({ type: 'button', ...props });
-    }
+  constructor(props: BackButtonProps) {
+    super({ type: 'button', ...props });
+  }
 
-    init() {
-    }
+  init() {
+  }
 
-    render() {
-        return this.compile(backButtonTpl, { ...this.props });
-    }
+  render() {
+    return this.compile(backButtonTpl, { ...this.props });
+  }
 }
-

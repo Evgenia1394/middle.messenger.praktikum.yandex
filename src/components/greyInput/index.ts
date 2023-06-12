@@ -1,5 +1,5 @@
-import {greyInputTpl} from "./greyInputTpl";
-import Block from "../../utils/Block";
+import { greyInputTpl } from './greyInputTpl';
+import Block from '../../utils/Block';
 
 export interface GreyInputProps {
     placeholder?: string,
@@ -10,22 +10,23 @@ export interface GreyInputProps {
     label?: string,
     events?: {
         click?: () => void;
-        focusin?: (value, name) => void;
-        focusout?: (value, name) => void;
+        focusin?: (value: FocusEvent) => void;
+        focusout?: (value: FocusEvent) => void;
     };
 }
 
 export class GreyInput extends Block<GreyInputProps> {
-    constructor(props: GreyInputProps) {
-        super({type: 'input', ...props});
-    }
+  constructor(props: GreyInputProps) {
+    super({ type: 'input', ...props });
+  }
 
-    public get value() {
-        return (this.element as HTMLInputElement).value;
-    }
-    init() {}
+  public get value() {
+    return (this.element as HTMLInputElement).value;
+  }
 
-    render() {
-        return this.compile(greyInputTpl, { ...this.props });
-    }
+  init() {}
+
+  render() {
+    return this.compile(greyInputTpl, { ...this.props });
+  }
 }

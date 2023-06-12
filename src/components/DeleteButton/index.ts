@@ -1,5 +1,5 @@
 import Block from '../../utils/Block';
-import {deleteButtonBlockTpl} from "./DeleteButtonTpl";
+import { deleteButtonBlockTpl } from './DeleteButtonTpl';
 
 interface DeleteButtonProps {
     type?: string;
@@ -8,19 +8,19 @@ interface DeleteButtonProps {
     typeAction?: string;
     formName?: string;
     events?: {
-        click?: (e) => void;
+        click?: (e: MouseEvent) => void;
     };
 }
 
 export class DeleteButtonBlock extends Block<DeleteButtonProps> {
-    constructor(props: DeleteButtonProps) {
-        super({ type: 'button', ...props });
-    }
+  constructor(props: DeleteButtonProps) {
+    super({ type: 'button', ...props });
+  }
 
-    init() {
-    }
+  init() {
+  }
 
-    render() {
-        return this.compile(deleteButtonBlockTpl, { ...this.props });
-    }
+  render() {
+    return this.compile(deleteButtonBlockTpl, { ...this.props });
+  }
 }
