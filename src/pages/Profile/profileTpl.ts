@@ -1,4 +1,4 @@
-import "../../styles/profileStyles.scss";
+import '../../styles/profileStyles.scss';
 
 export const profileTpl = `
        <main class="profile">
@@ -23,4 +23,4 @@ export const profileTpl = `
                </div>
            </div>
        </main>
-    `
+    `;

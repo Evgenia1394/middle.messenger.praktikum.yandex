@@ -1,5 +1,5 @@
-import Block from "../../utils/Block";
-import {MessageTpl} from "./MessageTpl";
+import Block from '../../utils/Block';
+import { MessageTpl } from './MessageTpl';
 
 interface MessageProps {
     type?: string;
@@ -17,22 +17,22 @@ interface MessageProps {
 }
 
 export class Message extends Block<MessageProps> {
-    constructor(props: MessageProps) {
-        super({ type: 'div', ...props });
-    }
+  constructor(props: MessageProps) {
+    super({ type: 'div', ...props });
+  }
 
-    init() {
-        this.props.time = !this.props.time ? this.props.time : this.parseTimeFromDate(this.props.time)
-    }
+  init() {
+    this.props.time = !this.props.time ? this.props.time : this.parseTimeFromDate(this.props.time);
+  }
 
-    render() {
-        return this.compile(MessageTpl, { ...this.props });
-    }
+  render() {
+    return this.compile(MessageTpl, { ...this.props });
+  }
 
-    parseTimeFromDate(dateString) {
-        const date = new Date(Date.parse(dateString));
-        const hours = date.getHours();
-        const minutes = date.getMinutes();
-        return `${hours}:${minutes}`
-    }
+  parseTimeFromDate(dateString: string) {
+    const date = new Date(Date.parse(dateString));
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    return `${hours}:${minutes}`;
+  }
 }

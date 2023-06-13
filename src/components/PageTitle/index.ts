@@ -1,5 +1,5 @@
-import Block from "../../utils/Block";
-import {PageTitleTpl} from "./PageTitleTpl";
+import Block from '../../utils/Block';
+import { PageTitleTpl } from './PageTitleTpl';
 
 export interface PageTitleProps {
     type?: string,
@@ -9,20 +9,20 @@ export interface PageTitleProps {
     time?: string,
     events?: {
         click?: () => void;
-        focusin?: (value, name) => void;
-        focusout?: (value, name) => void;
+        focusin?: (value: string | number) => void;
+        focusout?: (value: string | number) => void;
     };
     Title?: string;
 }
 
 export class PageTitle extends Block<PageTitleProps> {
-    constructor(props: PageTitleProps) {
-        super({type: 'div', ...props});
-    }
+  constructor(props: PageTitleProps) {
+    super({ type: 'div', ...props });
+  }
 
-    init() {}
+  init() {}
 
-    render() {
-        return this.compile(PageTitleTpl, { ...this.props });
-    }
+  render() {
+    return this.compile(PageTitleTpl, { ...this.props });
+  }
 }

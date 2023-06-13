@@ -1,4 +1,4 @@
-import "../../styles/dialogPreviewStyles.scss";
+import '../../styles/dialogPreviewStyles.scss';
 
 export const DialogPreviewTpl = `
         <div class="dialog-preview">
@@ -23,4 +23,4 @@ export const DialogPreviewTpl = `
             </div>
         </div>
         </div>
-    `
+    `;

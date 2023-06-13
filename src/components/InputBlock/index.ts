@@ -1,5 +1,5 @@
-import Block from "../../utils/Block";
-import {inputTpl} from "./inputBlockTpl";
+import Block from '../../utils/Block';
+import { inputTpl } from './inputBlockTpl';
 
 export interface InputBlockProps {
     placeholder?: string,
@@ -10,22 +10,23 @@ export interface InputBlockProps {
     label?: string,
     events?: {
         click?: () => void;
-        focusin?: (value, name) => void;
-        focusout?: (value, name) => void;
+        focusin?: (value: any) => void;
+        focusout?: (value: any) => void;
     };
 }
 
 export class InputBlock extends Block<InputBlockProps> {
-    constructor(props: InputBlockProps) {
-        super({type: 'input', ...props});
-    }
+  constructor(props: InputBlockProps) {
+    super({ type: 'input', ...props });
+  }
 
-    public get value() {
-        return (this.element as HTMLInputElement).value;
-    }
-    init() {}
+  public get value() {
+    return (this.element as HTMLInputElement).value;
+  }
 
-    render() {
-        return this.compile(inputTpl, { ...this.props });
-    }
+  init() {}
+
+  render() {
+    return this.compile(inputTpl, { ...this.props });
+  }
 }

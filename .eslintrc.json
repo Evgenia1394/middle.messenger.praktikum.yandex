@@ -1,7 +1,29 @@
 {
-  "extends": "airbnb",
+  "extends": [
+    "airbnb"
+  ],
+  "plugins": ["jest"],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": "latest"
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "jest": true
+  },
   "rules": {
     "max-len": [2, 100],
-    "max-params": [2, 3]
+    "max-params": [2, 3],
+    "no-unused-vars": "error",
+    "no-const-assign": "error",
+    "space-before-blocks": "error",
+    "no-multiple-empty-lines": "error",
+    "indent": "error",
+    "no-trailing-spaces": "error",
+    "no-underscore-dangle": "off",
+    "no-console": "off",
+    "jest/no-deprecated-functions": "off",
+    "jest/valid-title": "off"
   }
 }

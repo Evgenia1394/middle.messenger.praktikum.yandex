@@ -1,4 +1,5 @@
-import "../../styles/commonStyles.scss";
+import '../../styles/commonStyles.scss';
+
 export const profileFieldTpl = `
         <div class="profile-field">
         <div class="profile-field__name">
@@ -8,4 +9,4 @@ export const profileFieldTpl = `
             {{{value}}}
         </div>
         </div>
-    `
+    `;

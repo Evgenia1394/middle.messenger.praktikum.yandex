@@ -1,4 +1,4 @@
-import "../../styles/loginStyles.scss";
+import '../../styles/loginStyles.scss';
 
 export const loginTpl = `
         <main class="login">
@@ -18,4 +18,4 @@ export const loginTpl = `
             </div>
             </div>
         </main>
-    `
+    `;

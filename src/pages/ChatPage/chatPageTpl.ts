@@ -1,4 +1,4 @@
-import "../../styles/chatPageStyles.scss";
+import '../../styles/chatPageStyles.scss';
 
 export const chatPageTpl = `
        <main class="chat-page">
@@ -18,4 +18,4 @@ export const chatPageTpl = `
             {{{currentChat}}}
             </div>
        </div>
-    `
+    `;

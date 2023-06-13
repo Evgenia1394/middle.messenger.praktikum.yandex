@@ -1,4 +1,4 @@
-import "../../styles/commonStyles.scss";
+import '../../styles/commonStyles.scss';
 
 export const inputAvatarTpl = `
         <form id="uploadForm">
@@ -9,4 +9,4 @@ export const inputAvatarTpl = `
           </label>
         </div>
         </form>
-    `
+    `;

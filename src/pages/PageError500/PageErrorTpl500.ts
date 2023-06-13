@@ -1,4 +1,4 @@
-import "../../styles/pageErrorStyles.scss";
+import '../../styles/pageErrorStyles.scss';
 
 export const pageErrorTpl500 = `
         <main class="page-error">
@@ -8,4 +8,4 @@ export const pageErrorTpl500 = `
                {{{backButton}}}
             </div>
         </div>
-    `
+    `;
